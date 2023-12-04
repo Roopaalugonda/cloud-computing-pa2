@@ -14,11 +14,11 @@ import org.apache.spark.sql.SparkSession;
 public class AwsSparkWinePredictionTest {
 
     public static void main(String[] args) {
-        SparkConf conf = new SparkConf().setAppName("awsSparkWinePrediction").setMaster("local");
+        SparkConf conf = new SparkConf().setAppName("awsSparkWinePredictionTest").setMaster("local");
         JavaSparkContext sc = new JavaSparkContext(conf);
         SparkSession spark = SparkSession.builder().config(conf).getOrCreate();
 
-        String path = args[0];
+        String path = "s3:/cs643/ValidationDataset.csv";
         
         // Loading the data and casting relevant columns
         Dataset<Row> data = spark.read().format("csv").option("header", "true").option("sep", ";").load(path);

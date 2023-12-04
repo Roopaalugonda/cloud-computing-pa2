@@ -19,7 +19,7 @@ public class AwsSparkWinePrediction {
         SparkSession spark = SparkSession.builder().config(conf).getOrCreate();
 
         
-        String path = args[0];
+        String path = "s3:/cs643/TrainingDataset.csv";
 
         // Loading the data and casting relevant columns
         Dataset<Row> data = spark.read().format("csv").option("header", "true").option("sep", ";").load(path);
